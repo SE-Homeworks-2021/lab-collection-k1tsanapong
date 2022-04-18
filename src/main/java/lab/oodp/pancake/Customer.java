@@ -45,18 +45,29 @@ public class Customer {
 
         int desiredMealSize = this.bellySize;
 
-        while (desiredMealSize > 0) {
-        	//TODO: remove null, get pancake from stack
-            Pancake p = null;
-            
-            if (p != null) {
+        try {
 
-                System.out.println(getName() + " ate " + p + "!");
-                desiredMealSize--;
+            while (desiredMealSize > 0) {
+                //TODO: remove null, get pancake from stack
+                Pancake p = pancakes.pop();
+                if (p != null) {
 
-            } //TODO: add else when p is null (no more pancake in the stack), and throws HungryException
+                    System.out.println(getName() + " ate " + p + "!");
+                    desiredMealSize--;
 
+                } //TODO: add else when p is null (no more pancake in the stack), and throws HungryException
+
+
+
+
+            }
         }
+
+        catch (Exception e)
+        {
+            throw new HungryException(getName()+" is still hungry :(");
+        }
+
 
         System.out.println(getName() + " ate " + this.bellySize + " pancakes in total!");
 
